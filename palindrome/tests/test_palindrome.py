@@ -44,3 +44,12 @@ def test_process_candidate_rearrange_three_way():
 def test_process_candidate_rearrange_many_ways():
     candidate = "cfbe?gdgaed?cgafbffb"
     assert get_palindrome.process_candidate(candidate) == "abbcdeffggggffedcbba"
+def test_process_candidate_rearrange_wildcard():
+    candidate = "a?b?c"
+    assert get_palindrome.process_candidate(candidate) == "abcba"
+def test_process_candidate_rearrange_wildcard_many():
+    candidate = "b???"
+    assert get_palindrome.process_candidate(candidate) == "abba"
+def test_process_candidate_rearrange_wildcard_only():
+    candidate = "????"
+    assert get_palindrome.process_candidate(candidate) == "aaaa"

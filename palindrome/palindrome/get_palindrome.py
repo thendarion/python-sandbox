@@ -30,20 +30,22 @@ def process_candidate(candidate: str) -> str:
             "count" : count,
             "odd" : (count % 2)
         }
+
     for char, value in char_map.items():
         if char != '?' and value["odd"] == 1:
             if char_map["?"]["count"] > 0:
                 char_map[char]["count"] += 1
                 char_map[char]["odd"] = 0
                 char_map["?"]["count"] -= 1
-    
+
     if char_map["?"]["count"] > 0:
-        char_map["?"]["count"] = 0
-        char_map["a"]["count"] += 1
+        char_map["a"]["count"] += (char_map["?"]["count"])
         char_map["a"]["odd"] = (char_map["a"]["count"] % 2)
+        char_map["?"]["count"] = 0
+        char_map["?"]["odd"] = 0
 
     result = ''
-    
+    print(char_map)
     for char, value in char_map.items():
         if value["count"] > 0:
             result += char * math.floor(value["count"] // 2)
