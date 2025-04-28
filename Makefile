@@ -1,6 +1,6 @@
 install:
-    python -m pip install --upgrade pip
-    pip install poetry
+	python -m pip install --upgrade pip && \
+	pip install poetry && \
 	cd palindrome && \
 	poetry install
 

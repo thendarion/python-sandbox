@@ -45,7 +45,6 @@ def process_candidate(candidate: str) -> str:
         char_map["?"]["odd"] = 0
 
     result = ''
-    print(char_map)
     for char, value in char_map.items():
         if value["count"] > 0:
             result += char * math.floor(value["count"] // 2)
