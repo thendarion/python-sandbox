@@ -1,9 +1,12 @@
+.PHONY: all palindrome
+
+all: palindrome
+
+palindrome:
+	$(MAKE) -C palindrome
+
 install:
-	python -m pip install --upgrade pip && \
-	pip install poetry && \
-	cd palindrome && \
-	poetry install
+	$(MAKE) -C palindrome install
 
 test:
-	cd palindrome && \
-	poetry run invoke test-all
+	$(MAKE) -C palindrome test
