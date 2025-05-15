@@ -8,10 +8,11 @@ on:
   pull_request:
     branches: [ main ]
 
-
 jobs:
   build:
+
     runs-on: ubuntu-latest
+
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python
@@ -25,22 +26,17 @@ jobs:
     - name: Run tests
       run: make test
 
-    - name: Upload Robot Results
+    - name: Pytest Report
+      uses: dorny/test-reporter@v2
       if: always()
-      uses: actions/upload-artifact@v4
       with:
-        name: Robot Results
-        path: '*/robot-result.xml'
-
-  generate_report:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Download Test Results
-      uses: actions/download-artifact@v1
+        name: Pytest Tests
+        path: '*/pytest-report.xml'
+        reporter: jest-junit
+    - name: Robot Report
+      uses: dorny/test-reporter@v2
+      if: always()
       with:
-        name: Robot Results
-    - name: Send Robot Results to Commit
-      uses: joonvena/robotframework-reporter-action@v2.5
-      with:
-        gh_access_token: ${{ secrets.GITHUB_TOKEN }}
+        name: Robot Tests
+        path: '*/robot-report.xml'
+        reporter: swift-xunit
