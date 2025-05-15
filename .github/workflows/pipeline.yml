@@ -26,17 +26,11 @@ jobs:
     - name: Run tests
       run: make test
 
-    - name: Pytest Report
+    - name: Test Report
       uses: dorny/test-reporter@v2
       if: always()
       with:
-        name: Pytest Tests
-        path: '**/pytest-report.xml'
-        reporter: jest-junit
-    - name: Robot Report
-      uses: dorny/test-reporter@v2
-      if: always()
-      with:
-        name: Robot Tests
-        path: '**/robot-report.xml'
-        reporter: swift-xunit
+        name: Tests
+        path: '**/*-report.xml'
+        reporter: java-junit
+ 
