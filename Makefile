@@ -10,3 +10,6 @@ install:
 
 test:
 	$(MAKE) -C palindrome test
+
+preprocess-test-results:
+	$(MAKE) -C palindrome preprocess-test-results

@@ -27,7 +27,7 @@ jobs:
       run: make test
 
     - name: Preprocess tests
-      run: cd palindrome && sed '0,/testsuite/s//testsuites/' robot-report.xml | tac | sed '0,/testsuite/s//testsuites/' | tac > output.xml && mv output.xml robot-report.xml
+      run: make preprocess-test-results
 
     - name: Test Report
       uses: dorny/test-reporter@v2
