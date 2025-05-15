@@ -25,3 +25,15 @@ jobs:
 
     - name: Run tests
       run: make test
+
+    - name: Preprocess tests
+      run: make preprocess-test-results
+
+    - name: Test Report
+      uses: dorny/test-reporter@v2
+      if: always()
+      with:
+        name: Tests
+        path: '**/*-report.xml'
+        reporter: java-junit
+ 
