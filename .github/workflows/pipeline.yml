@@ -26,9 +26,6 @@ jobs:
     - name: Run tests
       run: make test
 
-    - name: Preprocess test results
-      run: make preprocess
-
     - name: Test Report
       uses: dorny/test-reporter@v2
       if: always()

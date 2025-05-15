@@ -1,9 +1,12 @@
-## alphabetically optimised palindrome with partially known letters 
+## Alphabetically Optimized Palindrome with Partially Known Letters
 
-* take a random string of English letters of arbitrary length 
-* if possible, rearrange it to form a palindrome, if not, say so
-* the palindrome should be the lowest possible alphabetically, id est baba should become abba and not baab
-* now the fun part: let there be wildcards that can be any letter, so for example bab? and b??? should both become abba
- 
+This project provides a solution for generating the lowest possible alphabetical palindrome from a given string, which may include wildcard characters.
 
-ready, set, go :)
+### Features
+
+- Accepts a string of English letters (a-z) of arbitrary length.
+- Supports wildcard characters (`?`) that can represent any letter.
+- Attempts to rearrange the string (including wildcards) to form a palindrome.
+- If a palindrome is possible, returns the alphabetically smallest one (e.g., `baba` becomes `abba`).
+- If a palindrome cannot be formed, notifies the user.
+

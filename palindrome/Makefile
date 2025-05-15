@@ -10,9 +10,7 @@ build: install test
 
 install: .installed
 
-test:
+test: install
 	poetry run invoke test-all
-
-preprocess-test-results:
-	sed '0,/testsuite/s//testsuites/' robot-report.xml | tac | sed '0,/testsuite/s//testsuites/' | tac > output.xml  
-	mv output.xml robot-report.xml
+	sed '0,/testsuite/s//testsuites/' robot-report.xml | tac | sed '0,/testsuite/s//testsuites/' | tac > temp.xml  
+	mv temp.xml robot-report.xml
