@@ -1,15 +1,23 @@
-.PHONY: all palindrome install test preprocess-test-results
+MODULES := palindrome
 
-all: palindrome
+BASE_TARGETS := install test preprocess
+INSTALL_TARGETS := $(MODULES:%=%-install)
+TEST_TARGETS := $(MODULES:%=%-test)
+PREPROCESS_TARGETS := $(MODULES:%=%-preprocess)
 
-palindrome:
-	$(MAKE) -C palindrome
+.PHONY: build $(BASE_TARGETS) $(INSTALL_TARGETS) $(TEST_TARGETS) $(PREPROCESS_TARGETS)
 
-install:
-	$(MAKE) -C palindrome install
+build: $(BASE_TARGETS)
 
-test:
-	$(MAKE) -C palindrome test
+install: $(INSTALL_TARGETS)
+test: $(TEST_TARGETS)
+preprocess: $(PREPROCESS_TARGETS)
 
-preprocess-test-results:
-	$(MAKE) -C palindrome preprocess-test-results
+$(INSTALL_TARGETS): %-install:
+	$(MAKE) -C $* install
+
+$(TEST_TARGETS): %-test:
+	$(MAKE) -C $* test
+
+$(PREPROCESS_TARGETS): %-preprocess:
+	$(MAKE) -C $* preprocess-test-results
