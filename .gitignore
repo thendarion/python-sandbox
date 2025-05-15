@@ -178,4 +178,4 @@ palindrome/report.html
 
 # misc
 .installed
-junit-*.xml
+*-result.xml
