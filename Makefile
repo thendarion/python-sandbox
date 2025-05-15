@@ -1,4 +1,4 @@
-.PHONY: all palindrome
+.PHONY: all palindrome install test preprocess-test-results
 
 all: palindrome
 
