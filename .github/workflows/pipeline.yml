@@ -42,3 +42,18 @@ jobs:
         name: Test Results
         path: '*/*-result.xml'
 
+  test-results:
+    name: Test Results
+    runs-on: ubuntu-latest
+    if: always()
+
+    steps:
+      - name: Download and Extract Artifacts
+        uses: dawidd6/action-download-artifact@e7466d1a7587ed14867642c2ca74b5bcc1e19a2d
+        with:
+           path: artifacts
+
+      - name: Publish Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        with:
+          files: "artifacts/**/*.xml"
