@@ -1,6 +1,6 @@
 # This workflow will install dependencies and run tests using invoke
 
-name: CI with invoke
+name: install and test
 
 on:
   push:

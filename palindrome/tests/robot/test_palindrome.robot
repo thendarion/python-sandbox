@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation     Tests for the get_palindrome.py script.
+Documentation     get_palindrome.py e2e tests
 Library           OperatingSystem
 Library           BuiltIn
 Library           Process
@@ -15,37 +15,37 @@ Get Palindrome
     Return From Keyword    ${result}
 
 *** Test Cases ***
-Test Palindrome With Valid Input
-    [Documentation]    get_palindrome.py should return a palindrome for valid input
+Valid Input
+    [Documentation]    should return a palindrome for valid input
     ${result}=    Get Palindrome    madam
     Should Be Equal As Strings    ${result.stdout}    Your palindrome is amdma.
 
-Test Palindrome With Non-Palindrome Input
-    [Documentation]    get_palindrome.py should return a message for non-palindrome input
+Non-Palindrome Input
+    [Documentation]    should return a message for non-palindrome input
     ${result}=    Get Palindrome    hello
     Should Be Equal As Strings    ${result.stdout}    hello cannot be a palindrome.
 
-Test Palindrome With Wildcard Input
-    [Documentation]    get_palindrome.py should return a palindrome for input with wildcards
+Wildcard Input
+    [Documentation]    should return a palindrome for input with wildcards
     ${result}=    Get Palindrome    hello??
     Should Be Equal As Strings    ${result.stdout}    Your palindrome is ehlolhe.
 
-Test Palindrome With Empty Input
-    [Documentation]    get_palindrome.py should return the usage message for empty input
+Empty Input
+    [Documentation]    should return the usage message for empty input
     ${result}=    Get Palindrome    ${EMPTY}
     Should Be Equal As Strings    ${result.stdout}    ${USAGE}
 
-Test Palindrome With Numeric Input
-    [Documentation]    get_palindrome.py should return the usage message for numeric input
+Numeric Input
+    [Documentation]    should return the usage message for numeric input
     ${result}=    Get Palindrome    12321
     Should Be Equal As Strings    ${result.stdout}    ${USAGE}
 
-Test Palindrome With Capital Letters
-    [Documentation]    get_palindrome.py should return the usage message for capital letters
+Capital Letters
+    [Documentation]    should return the usage message for capital letters
     ${result}=    Get Palindrome    Madam
     Should Be Equal As Strings    ${result.stdout}    ${USAGE}
 
-Test Palindrome With Special Characters
-    [Documentation]    get_palindrome.py should return the usage message for special characters
+Special Characters
+    [Documentation]    should return the usage message for special characters
     ${result}=    Get Palindrome    &@&
     Should Be Equal As Strings    ${result.stdout}    ${USAGE}

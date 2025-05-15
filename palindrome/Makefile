@@ -1,4 +1,4 @@
-.PHONY: build install test preprocess-test-results
+.PHONY: build install test run-tests preprocess-test-results
 
 build: install test
 
@@ -10,7 +10,10 @@ build: install test
 
 install: .installed
 
-test: install
+run-tests:
 	poetry run invoke test-all
-	sed '0,/testsuite/s//testsuites/' robot-report.xml | tac | sed '0,/testsuite/s//testsuites/' | tac > temp.xml  
-	mv temp.xml robot-report.xml
+
+preprocess-test-results:
+	sed -e '0,/testsuite/s//testsuites/' -e '$$s/testsuite/testsuites/' -i robot-report.xml 
+
+test: install run-tests preprocess-test-results
