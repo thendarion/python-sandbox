@@ -4,7 +4,7 @@ from invoke import task
 @task
 def test_robot(c):
     print("")
-    c.run("robot --xunit robot-report.xml tests/robot/")
+    c.run("robot --xunit robot-report.xml test/")
 
 @task
 def test_pytest(c):
