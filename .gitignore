@@ -172,9 +172,9 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
-palindrome/log.html
-palindrome/output.xml
-palindrome/report.html
+log.html
+output.xml
+report.html
 
 # misc
 .installed

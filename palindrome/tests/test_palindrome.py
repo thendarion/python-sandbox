@@ -1,4 +1,4 @@
-import palindrome.get_palindrome as get_palindrome
+import src.palindrome as get_palindrome
 
 
 

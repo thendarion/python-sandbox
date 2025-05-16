@@ -91,7 +91,7 @@ def get_palindrome(candidate: str):
 
 if __name__ == "__main__":
     if len(sys.argv) != 2 or not re.match('^[a-z?]+$', sys.argv[1]):
-        print("Usage: python get_palindrome.py <candidate>")
+        print("Usage: python palindrome.py <candidate>")
         print("Candidate must be a string of lowercase letters and wildcards (?)")
     else:
         get_palindrome(candidate=sys.argv[1])

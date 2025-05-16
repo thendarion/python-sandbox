@@ -1,17 +1,17 @@
 *** Settings ***
-Documentation     get_palindrome.py e2e tests
+Documentation     palindrome.py e2e tests
 Library           OperatingSystem
 Library           BuiltIn
 Library           Process
 
 *** Variables ***
-${USAGE}    Usage: python get_palindrome.py <candidate>\nCandidate must be a string of lowercase letters and wildcards (?)
+${USAGE}    Usage: python palindrome.py <candidate>\nCandidate must be a string of lowercase letters and wildcards (?)
 
 *** Keywords ***
 Get Palindrome
     [Arguments]    ${candidate}
     [Documentation]    Get the palindrome from the candidate string.
-    ${result}=    Run Process      python3    palindrome/get_palindrome.py    ${candidate}
+    ${result}=    Run Process      python3    src/palindrome.py    ${candidate}
     Return From Keyword    ${result}
 
 *** Test Cases ***
